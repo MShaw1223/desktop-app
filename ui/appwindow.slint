@@ -1,0 +1,66 @@
+import { Button, VerticalBox, LineEdit, HorizontalBox } from "std-widgets.slint";
+
+
+export component AppWindow inherits Window {
+    in property <string> output: "";
+    callback process-input(string);
+
+    title: "First Desktop App";
+    min-height: 450px;
+    min-width: 700px;
+    background: #313e50;
+    HorizontalBox {
+        Text {
+            text: "Prints an input into the box below";
+            horizontal-alignment: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: grey;
+        }
+    }
+
+    Rectangle {
+        width: 33%;
+        height: 50%;
+        drop-shadow-color: blue;
+        GridLayout {
+            spacing: 15px;
+            padding: 10px;
+            Row {
+                VerticalBox {
+                    Rectangle {
+                        height: 100px;
+                        background: wheat;
+                        Text {
+                            color: black;
+                            text: root.output;
+                            font-weight: 700;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+
+            Row {
+                input := LineEdit {
+                    font-size: 14px;
+                    placeholder-text: "Enter input";
+                    horizontal-alignment: center;
+                    height: 35px;
+                }
+            }
+
+            Row {
+                Button {
+                    text: "click me";
+                    primary: true;
+                    height: 35px;
+                    clicked => {
+                        process-input(input.text);
+                        input.text = ""
+                    }
+                }
+            }
+        }
+    }
+}
