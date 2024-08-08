@@ -14,7 +14,7 @@ export component AppWindow inherits Window {
         Text {
             text: "Prints an input into the box below";
             horizontal-alignment: center;
-            font-size: 14px;
+            font-size: 26px;
             font-weight: 600;
             color: grey;
         }
@@ -45,7 +45,7 @@ export component AppWindow inherits Window {
             Row {
                 input := LineEdit {
                     font-size: 14px;
-                    placeholder-text: "Enter input";
+                    placeholder-text: "Enter Input";
                     horizontal-alignment: center;
                     height: 35px;
                 }
@@ -53,7 +53,7 @@ export component AppWindow inherits Window {
 
             Row {
                 Button {
-                    text: "click me";
+                    text: "Click Me";
                     primary: true;
                     height: 35px;
                     clicked => {
