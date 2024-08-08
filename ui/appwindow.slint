@@ -2,6 +2,7 @@ import { Button, VerticalBox, LineEdit, HorizontalBox } from "std-widgets.slint"
 
 
 export component AppWindow inherits Window {
+    // in allows the prop to be updated from the main.rs file by making it public
     in property <string> output: "";
     callback process-input(string);
 
@@ -56,7 +57,9 @@ export component AppWindow inherits Window {
                     primary: true;
                     height: 35px;
                     clicked => {
+                        // invokes callback 'process-input'' (process_input in main.rs) passing in the input as the string param
                         process-input(input.text);
+                        // resets the lineedit 'input' to an empty string
                         input.text = ""
                     }
                 }
